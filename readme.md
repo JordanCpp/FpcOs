@@ -16,7 +16,7 @@ This project explores bare-metal OS development without a standard runtime libra
 
 | Build Process | Running in QEMU |
 | :---: | :---: |
-| ![Building kernel.elf](screenshots/build.png) | ![Running in QEMU](screenshots/qemu.png) |
+| ![Building kernel.elf](screenshots/build.jpg) | ![Running in QEMU](screenshots/qemu.jpg) |
 
 ## Prerequisites
 To build and run FpcOs on Windows, you will need:

@@ -6,12 +6,12 @@ if not exist build mkdir build
 del /q build\*.* 2>nul
 
 echo [1/4] Assembling boot.s...
-%FPC_BIN%\as.exe --32 src\boot.s -o build\boot.o
-%FPC_BIN%\as.exe --32 src\interrupts.s -o build\interrupts.o
+%FPC_BIN%\as.exe --32 HAL\x86\boot.s       -o build\boot.o
+%FPC_BIN%\as.exe --32 HAL\x86\interrupts.s -o build\interrupts.o
 if errorlevel 1 goto err
 
 echo [2/4] Compiling kernel.pas...
-%FPC_BIN%\fpc.exe -n -O2 -Twin32 -Cn -Fusrc -FEbuild src\Main.pas
+%FPC_BIN%\fpc.exe -n -O2 -Twin32 -Cn -Fusrc -FuHAL\x86 -FEbuild src\Main.pas
 if errorlevel 1 goto err
 
 echo [3/4] Linking...

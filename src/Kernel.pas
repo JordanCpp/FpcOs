@@ -12,7 +12,7 @@ USES
 TYPE
   TKernel = OBJECT
     Hardware: THal;
-    Terminal : TConsole;
+    Terminal: TConsole;
     PROCEDURE Init;
     PROCEDURE Run;
   END;

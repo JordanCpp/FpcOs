@@ -16,7 +16,7 @@ TYPE
     FCursorY     : Int;
     FColor       : UInt8;
     FAttribute   : UInt8;
-    PROCEDURE Init(AVideoAddr: PUInt);
+    PROCEDURE Init;
     PROCEDURE Clear;
     PROCEDURE WriteChar(c: Char);
     PROCEDURE WriteString(CONST s: STRING);
@@ -25,9 +25,9 @@ TYPE
 
 IMPLEMENTATION
 
-PROCEDURE TConsole.Init(AVideoAddr: PUInt);
+PROCEDURE TConsole.Init;
 BEGIN
-  FPVideoMemory := PVideoMemory(AVideoAddr);
+  FPVideoMemory := PVideoMemory($B8000);
   FCursorX      := 0;
   FCursorY      := 0;
   FColor        := $07;

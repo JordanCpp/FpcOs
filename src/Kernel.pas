@@ -1,20 +1,18 @@
 { Copyright 2026-present Evgeny Zoshchuk (JordanCpp) | GNU GPLv3 (https://gnu.org) }
 
-UNIT kernel;
+UNIT Kernel;
 
 {$MODE OBJFPC}
 
 INTERFACE
 
 USES 
-  PortIO, MemoryIO, PIC, Interrupt, GDT, Console;
+  HAL, Console;
 
 TYPE
   TKernel = OBJECT
-    GDTSettings      : TGDTSettings;
-    Terminal         : TConsole;
-    InterruptManager : TInterruptManager;
-    IDT              : TIDT;
+    Hardware: THal;
+    Terminal : TConsole;
     PROCEDURE Init;
     PROCEDURE Run;
   END;
@@ -23,18 +21,15 @@ IMPLEMENTATION
 
 PROCEDURE TKernel.Init;
 BEGIN
-  GDTSettings.Init;
-  GDTSettings.Load;
-  InterruptManager.Init(@IDT);
-  Terminal.Init($B8000);
-
-  Terminal.WriteLine('Hello!');
+  Hardware.Init;
+  Terminal.Init;
 END;
 
 PROCEDURE TKernel.Run;
 BEGIN
   WHILE TRUE DO
   BEGIN
+    Terminal.WriteLine('Hello!');
   END;
 END;
 
